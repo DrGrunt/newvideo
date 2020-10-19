@@ -49,7 +49,7 @@
     </div> <!-- /container -->
     
     <?php
-        include 'footer.php'
+        include 'footer.php'//YOURMOM
     ?>
      </body>
 </html>
