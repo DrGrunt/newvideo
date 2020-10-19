@@ -4,8 +4,8 @@
     require 'database.php';
     $_SESSION["kayttajaID"] = $kayttajaID;
     $kayttajaID = null;
-    if ( !empty($_GET['kayttajaID'])) {
-        $_SESSION = $_REQUEST['kayttajaID'];
+    if ( !empty($_GET['id'])) {
+        $kayttajaID = $_REQUEST['id'];
     }
      
     if ( null==$kayttajaID ) {
@@ -13,7 +13,7 @@
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM kayttaja where kayttajaID = ?";
+        $sql = "SELECT * FROM kayttaja where kayttajaID = ?".$kayttajaID;
         $pdo->exec("set names utf8");
         $q = $pdo->prepare($sql);
         $q->execute(array($kayttajaID));

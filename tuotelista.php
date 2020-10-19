@@ -13,9 +13,11 @@
                         <thead>
                             <tr>
                                 <th>Tuotenimi</th>
-                                <th>Lisatiedot</th>
-                                <th>Hinta</th>
                                 <th>Kuva</th>
+                            </tr>
+                            <tr>
+                                <th>Hinta</th>
+                                <th>Lisatiedot</th>
                                 <th>napullat</th>
                             </tr>
                         </thead>
@@ -27,9 +29,9 @@
                             foreach ($pdo->query($sql) as $row) {
                                 echo '<tr>';
                                 echo '<td>'. $row['tuotenimi'] . '</td>';
-                                echo '<td>'. $row['lisatiedot'] . '</td>';
+                                echo '<td><img style="width:80px" src="img/'. $row['kuva'] . '"><td width=250>'
                                 echo '<td>'. $row['hinta'] . '</td>';
-                                echo '<td><img style="width:80px" src="img/'. $row['kuva'] . '"><td width=250>';
+                                echo '<td>'. $row['lisatiedot'] . '</td>';
                                 echo '<a class="btn btn-info" href="katso_tuote.php?id='.$row['tuoteID'].'">Tarkista</a>';
                                 echo ' ';
                                 echo '<a class="btn btn-success" href="paivita_tuote.php?id='.$row['tuoteID'].'">Päivitä</a>';
