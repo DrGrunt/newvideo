@@ -9,7 +9,7 @@
                 <p>
                     <a href="lisaa_tuote.php" class="btn btn-success">Listaa tuote</a>
                 </p>
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-borderless">//table table-striped table-bordered
                         <thead>
                             <tr>
                                 <th>Tuotenimi</th>
