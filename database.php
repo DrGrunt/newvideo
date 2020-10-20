@@ -1,10 +1,10 @@
 <?php
 class Database
 {
-    private static $dbName = 'video' ;
+    private static $dbName = 'newvideo' ;
     private static $dbHost = 'localhost' ;
-    private static $dbUsername = 'video';
-    private static $dbUserPassword = 'QGGlLazSt8V2l2iN';
+    private static $dbUsername = 'kalamakala';
+    private static $dbUserPassword = 'kalamakala';
      
     private static $cont  = null;
      

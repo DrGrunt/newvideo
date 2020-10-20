@@ -73,7 +73,7 @@
       <h1>Album example</h1>
       <p class="lead text-muted">PYLLY</p>
       <p>
-        <a href="#" class="kakka">Myy/Sell</a>
+        <a href="tuotelista.php" class="kakka">Myy/Sell</a>
         <a href="#" class="pissa">Osta/Buy</a>
       </p>
     </div>

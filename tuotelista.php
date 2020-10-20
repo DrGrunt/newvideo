@@ -11,15 +11,13 @@
                 </p>
                     <table class="table table-borderless">//table table-striped table-bordered
                         <thead>
-                            <tr>
+                        <tr>
                                 <th>Tuotenimi</th>
-                                <th>Kuva</th>
-                            </tr>
-                            <tr>
                                 <th>Hinta</th>
                                 <th>Lisatiedot</th>
+                                <th>Kuva</th>
                                 <th>napullat</th>
-                            </tr>
+                        </tr>
                         </thead>
                   <tbody>
                     <?php
@@ -29,7 +27,6 @@
                             foreach ($pdo->query($sql) as $row) {
                                 echo '<tr>';
                                 echo '<td>'. $row['tuotenimi'] . '</td>';
-                                echo '<td><img style="width:80px" src="img/'. $row['kuva'] . '"><td width=250>'
                                 echo '<td>'. $row['hinta'] . '</td>';
                                 echo '<td>'. $row['lisatiedot'] . '</td>';
                                 echo '<a class="btn btn-info" href="katso_tuote.php?id='.$row['tuoteID'].'">Tarkista</a>';
