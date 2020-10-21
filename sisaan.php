@@ -2,7 +2,7 @@
     include 'header.php';
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: asiakas.php");
+    header("location: tuotelista.php");
     exit;
 }
 
@@ -28,7 +28,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ){
     if(empty($kayttajatunnusError) && empty($salasanaError)){
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT myyjaID, kayttajatunnus, salasana FROM myyja WHERE kayttajatunnus = :kayttajatunnus";
+        $sql = "SELECT kayttajaID, kayttajatunnus, salasana FROM kayttaja WHERE kayttajatunnus = :kayttajatunnus";
 
         if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":kayttajatunnus", $param_kayttajatunnus, PDO::PARAM_STR);
@@ -39,7 +39,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ){
             if($stmt->execute()){
                 if($stmt->rowCount() == 1){
                     if($row = $stmt->fetch()){
-                        $id = $row["myyjaID"];
+                        $id = $row["kayttajaID"];
                         $kayttajatunnus = $row["kayttajatunnus"];
                         $hashed_salasana = $row["salasana"];
                         if(password_verify($salasana, $hashed_salasana)){
@@ -47,10 +47,10 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ){
                             session_start();
                             
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["myyjaID"] = $id;
+                            $_SESSION["kayttajaID"] = $id;
                             $_SESSION["kayttajatunnus"] = $kayttajatunnus;                            
                             
-                            header("location: asiakas.php");
+                            header("location: tuotelista.php");
                         } else{
                             $salasanaError = "Salasana väärä";
                         }
