@@ -47,28 +47,28 @@
                         <div class="form-group row">
                             <label for="tuotenimi" class="col-sm-2 col-form-label">->Tuotenimi</label>
                             <div class="col-sm-10">
-                             <input name="tuotenimi" readonly type="text" placeholder="tuotenimi" value="<?php echo $data['tuotenimi']; ?>">
+                                <input name="tuotenimi" readonly type="text" placeholder="tuotenimi" value="<?php echo $data['tuotenimi']; ?>">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="lisatiedot" class="col-sm-2 col-form-label">Lisätiedot</label>
+                            <label for="lisatiedot" class="col-sm-2 col-form-label">♫Lisätiedot</label>
                             <div class="col-sm-10">
-                            <textarea readonly name="lisatiedot" cols="23" rows="5"><?php echo $data['lisatiedot']; ?></textarea>
+                                <textarea readonly name="lisatiedot" cols="23" rows="5"><?php echo $data['lisatiedot']; ?></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="hinta" class="col-sm-2 col-form-label">Hinta</label>
+                            <label for="hinta" class="col-sm-2 col-form-label">♂Hinta</label>
                             <div class="col-sm-10">
-                            <input name="hinta" readonly type="text" placeholder="hinta" value="<?php echo $data['hinta']; ?>">
+                                <input name="hinta" readonly type="text" placeholder="hinta" value="<?php echo $data['hinta']; ?>">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="kuva" class="col-sm-2 col-form-label">Kuva</label>
                             <div class="col-sm-10">
-                                <input name="kuva" readonly type="text" placeholder="kuva" value="<?php echo $data['kuva']; ?>">
+                                <input name="kuva" readonly type="file" class="custom-file-input" placeholder="kuva" value="<?php echo '<img style="width:80px" src="img/'. $data['kuva'] . '">'; ?>">
                             </div>
                         </div>
 
