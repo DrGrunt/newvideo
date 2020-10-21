@@ -3,8 +3,8 @@ class Database
 {
     private static $dbName = 'newvideo' ;
     private static $dbHost = 'localhost' ;
-    private static $dbUsername = 'kalamakala';
-    private static $dbUserPassword = 'kalamakala';
+    private static $dbUsername = 'video';
+    private static $dbUserPassword = 'QGGlLazSt8V2l2iN';
      
     private static $cont  = null;
      
