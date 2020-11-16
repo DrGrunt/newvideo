@@ -83,17 +83,31 @@
     <div class="container">
 
     
+    
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <img src="img/321921542060201.gif" class="rounded" height="300"  widh="300">    </img> 
             <div class="card-body">
-              <p class="card-text">"TÄHÄ LISÄTIEDOT" </p>
+            <?php
+                            include 'database.php';
+                            $pdo = Database::connect();
+                            $sql = 'SELECT * FROM tuote';
+                            foreach ($pdo->query($sql) as $row) 
+
+                            echo '<td>'. $row['tuotenimi'] . '</td>';
+
+                            echo '<td>';
+                            echo '<td>'. $row['lisatiedot'] . '</td>';
+                            
+
+                            
+                            Database::disconnect();
+            ?>
               <a href="tuotelista.php" class="btn btn-secondary" >Osta</a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                 </div>
-
               </div>
             </div>
           </div>
