@@ -29,7 +29,10 @@
                                 echo '<td>'. $row['tuotenimi'] . '</td>';
                                 echo '<td>'. $row['hinta'] . '</td>';
                                 echo '<td>'. $row['lisatiedot'] . '</td>';
-                                echo '<td>'. $row['kuva'] . '</td>';
+                                //echo '<td>'. $row['kuva'] . '</td>';
+                                //TÄN PITÄIS TOIMII
+                                echo "<td><img src=img/".$row['kuva']."'></td>";
+                                //
                                 echo '<td>';
                                 echo '<a class="btn btn-info" href="katso_tuote.php?id='.$row['tuoteID'].'">Tarkista</a>';
                                 echo ' ';

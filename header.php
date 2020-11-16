@@ -39,7 +39,7 @@
     <link href="css/carousel.css" rel="stylesheet">
     <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
   </head>
-  <body style="background-color:#90fff8;">
+  <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a class="navbar-brand" href="index.php"><?php echo SITENAME; ?></a>
