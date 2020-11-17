@@ -12,11 +12,15 @@
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $table = 'tuote';
         $sql = "SELECT * FROM tuote where tuoteID = ?";
         $pdo->exec("set names utf8");
         $q = $pdo->prepare($sql);
         $q->execute(array($tuoteID));
         $data = $q->fetch(PDO::FETCH_ASSOC);
+        echo "<h2>{$data['tuotenimi']}</h2>";
+        echo "<img src='echo {$data['kuva']}' width='40%' height='40%'>";
+        
         Database::disconnect();
     }
 ?>
@@ -38,18 +42,12 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>videotiedot</h3>
+                        <h3>tuote tiedot</h3>
                     </div>
 
                     
                     <div class="form-horizontal" >
 
-                        <div class="form-group row">
-                            <label for="tuotenimi" class="col-sm-2 col-form-label">->Tuotenimi</label>
-                            <div class="col-sm-10">
-                             <input name="tuotenimi" readonly type="text" placeholder="tuotenimi" value="<?php echo $data['tuotenimi']; ?>">
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label for="lisatiedot" class="col-sm-2 col-form-label">Lisätiedot</label>
@@ -68,7 +66,7 @@
                         <div class="form-group row">
                             <label for="kuva" class="col-sm-2 col-form-label">Kuva</label>
                             <div class="col-sm-10">
-                                <input name="kuva" readonly type="text" placeholder="kuva" value="<?php echo $data['kuva']; ?>">
+                                <input name="kuva" readonly type="text" placeholder="kuva" value="<?php print $row['kuva']; ?>">
                             </div>
                         </div>
 
