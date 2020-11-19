@@ -71,7 +71,7 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1>Album example</h1>
-      <p class="lead text-muted">PYLLY</p>
+      <p class="lead text-muted"></p>
       <p>
         <a href="lisaa_tuote.php" class="kakka">Myy/Sell</a>
         <a href="tuotelista.php" class="pissa">Osta/Buy</a>
@@ -87,7 +87,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img src="img/321921542060201.gif" class="rounded" height="300"  widh="300">    </img> 
+            <img src="img/" class="rounded" height="300"  widh="300">    </img> 
             <div class="card-body">
             <?php
                             include 'database.php';

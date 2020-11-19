@@ -30,7 +30,6 @@
                                 echo '<td>'. $row['hinta'] . '</td>';
                                 echo '<td>'. $row['lisatiedot'] . '</td>';
                                 //echo '<td>'. $row['kuva'] . '</td>';
-                                //TÄN PITÄIS TOIMII
                                 echo "<td><img src=img/".$row['kuva']."'></td>";
                                 //
                                 echo '<td>';
