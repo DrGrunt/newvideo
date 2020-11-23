@@ -29,7 +29,7 @@
                                 echo '<td>'. $row['tuotenimi'] . '</td>';
                                 echo '<td>'. $row['hinta'] . '</td>';
                                 echo '<td>'. $row['lisatiedot'] . '</td>';
-                                echo '<td>'. $row['kuva'] . '</td>';
+                                echo '<td>'. "<img src='img/{$row['kuva']}' width='100' height='100'>" . '</td>';
                                 echo '<td>';
                                 echo '<a class="btn btn-info" href="katso_tuote.php?id='.$row['tuoteID'].'">Tarkista</a>';
                                 echo ' ';
@@ -37,8 +37,8 @@
                                 echo ' ';
                                 echo '<a class="btn btn-danger" href="poista_tuote.php?id='.$row['tuoteID'].'">Poista</a>';
                                 echo '</td>';
-                         echo '</td>';
-                    echo '</tr>';
+                                 echo '</td>';
+                                 echo '</tr>';
                             }
                             Database::disconnect();
                         ?>

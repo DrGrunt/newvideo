@@ -39,9 +39,10 @@
     <link href="css/carousel.css" rel="stylesheet">
     <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
   </head>
-  <body style="background-color:#90fff8;">
+  <body style="background-color:#90gff8;">
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <img src="img/stoir.png" alt="Smiley face" height="42" width="42">
             <a class="navbar-brand" href="index.php"><?php echo SITENAME; ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

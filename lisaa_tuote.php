@@ -107,7 +107,8 @@
                 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-success">Create</button>
-                    <a class="btn" href="tuotelista.php">Back</a>
+                    <a class="btn" href="index.php">Etusivu</a>
+                    <a class="btn" href="tuotelista.php">Tuotelista</a>
                 </div>
                     
             </form>
