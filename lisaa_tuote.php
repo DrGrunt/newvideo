@@ -97,7 +97,7 @@
                     <div class="col-sm-8">
                         <div class="custom-file">
                             <input name="kuva" type="file" class="custom-file-input" placeholder="Kuva" value="<?php echo !empty($kuva)?$kuva:'';?>">
-                            <label for="" class="custom-file-label" data-browse="Sörch">Kuva</label>
+                            <label for="" class="custom-file-label" data-browse="Sörch">Kuva PITÄÄ OLLA 1:1 RATIO LOL</label>
                             <?php if (!empty($kuvaError)): ?>
                                 <small class="text-muted"><?php echo $kuvaError;?></small>
                             <?php endif; ?>

@@ -18,7 +18,6 @@
     <!-- Bootstrap core CSS -->
 <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-
 <meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#563d7c">
 
@@ -65,7 +64,7 @@
     <!-- Custom styles for this template -->
   </head>
   <body>
-  
+
 <main role="main">
 
   <section class="jumbotron text-center">
@@ -87,10 +86,11 @@
           <div class="card mb-4 shadow-sm">
           <img src="img/stoir.png" alt="Smiley face" >
             <div class="card-body">
+            <!-- 
               <p class="card-text">This is steir. </p>
-              <p class="card-text">He is gay. </p>
               <p class="card-text">He lives off of kela. </p>
               <p class="card-text">And he's proud of it. </p>
+               -->
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
