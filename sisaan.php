@@ -48,8 +48,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ){
                             
                             $_SESSION["loggedin"] = true;
                             $_SESSION["kayttajaID"] = $id;
-                            $_SESSION["kayttajatunnus"] = $kayttajatunnus;                            
-                            
+                            $_SESSION["kayttajatunnus"] = $kayttajatunnus;
                             header("location: asiakas.php");
                         } else{
                             $salasanaError = "Salasana väärä";
