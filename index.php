@@ -81,10 +81,56 @@
   <div class="album py-5 bg-light">
     <div class="container">
 
+    <?php
+     include 'database.php';
+    $pdo = Database::connect();
+    $sql = 'SELECT * FROM tuote';
+    foreach ($pdo->query($sql) as $row) {
+                            
+      ?>
+
+      <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+
+<?php
+          echo '<td>'. $row['tuotenimi'] . '</td>';
+          echo '<td>'. $row['hinta'] . '</td>';
+          echo '<td>'. $row['lisatiedot'] . '</td>';
+          echo '<td>'. "<img src='img/{$row['kuva']}' width='300' height='300'>" . '</td>';
+?>
+        <!--<img src="img/stoir.png" alt="Smiley face" > -->
+          <div class="card-body">
+          <!-- 
+            <p class="card-text">This is steir. </p>
+            <p class="card-text">He lives off of kela. </p>
+            <p class="card-text">And he's proud of it. </p>
+             -->
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              </div>
+              <small class="text-muted">
+                  <?php
+                  echo '<td>'. $row['tuotenimi'] . '</td>';
+                  ?>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <?php
+    }
+    
+                            ?>
+                            
+
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-          <img src="img/stoir.png" alt="Smiley face" >
+
+          <!--<img src="img/stoir.png" alt="Smiley face" > -->
             <div class="card-body">
             <!-- 
               <p class="card-text">This is steir. </p>
@@ -100,6 +146,10 @@
             </div>
           </div>
         </div>
+
+
+<!--
+
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
@@ -134,6 +184,7 @@
     </div>
   </div>
 
+-->
 </main>
 
 
