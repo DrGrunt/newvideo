@@ -67,30 +67,23 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="lahiosoite" class="col-sm-2 col-form-label">Lahiosoite</label>
-                            <div class="col-sm-10">
-                            <input name="lahiosoite" readonly type="text" placeholder="lahiosoite" value="<?php echo $data['lahiosoite']; ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="postinumero" class="col-sm-2 col-form-label">Postinumero</label>
-                            <div class="col-sm-10">
-                            <input name="postinumero" readonly type="text" placeholder="postinumero" value="<?php echo $data['postinumero']; ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="postitoimipaikka" class="col-sm-2 col-form-label">Postitoimipaikka</label>
                             <div class="col-sm-10">
-                             <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
+                            <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="sahkoposti" class="col-sm-2 col-form-label">Sähköposti</label>
+                            <div class="col-sm-10">
+                             <input name="sahkoposti" readonly type="text" placeholder="sahkoposti" value="<?php echo $data['sahkoposti']; ?>">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="puhelin" class="col-sm-2 col-form-label">Puhelinnumero</label>
                             <div class="col-sm-10">
-                             <input name="puhelin" readonly type="text" placeholder="puhelin" value="<?php echo $data['puhelin']; ?>">
+                             <input name="puhelin" readonly type="text" placeholder="puhelin" value="<?php echo $data['puhelinnumero']; ?>">
                             </div>
                         </div>
 
