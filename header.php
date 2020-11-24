@@ -49,6 +49,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
+                <?php if( isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ): ?>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="kayttaja.php?id=<?php echo ($_SESSION["kayttajaID"])?>">Profiili <span class="sr-only"></span></a>
+                  </li>
+                <?php endif; ?>
                 <?php if( isset($_SESSION["loggedin"]) && ($_SESSION["kayttajaID"]) == 1 && $_SESSION["loggedin"] === true ): ?>
                     <li class="nav-item active">
                         <a class="nav-link" href="asiakas.php">Asiakas <span class="sr-only"></span></a>

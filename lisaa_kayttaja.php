@@ -13,6 +13,7 @@
         $puhelinError = null;
         $kayttajatunnusError = null;
         $salasanaError = null;
+        $salasana2Error = null;
          
         // keep track post values
         $etunimi = $_POST['etunimi'];
@@ -66,6 +67,11 @@
 
         if (empty($salasana)) {
             $salasanaError = 'Salariplz';
+            $valid = false;
+        }
+
+        if (empty($salasana2)) {
+            $salasana2Error = 'Salari sama plz';
             $valid = false;
         }
          
@@ -203,6 +209,15 @@
                             <input name="salasana" type="password" placeholder="Salasana" value="<?php echo !empty($salasana)?$salasana:'';?>">
                             <?php if (!empty($salasanaError)): ?>
                                 <span class="help-inline"><?php echo $salasanaError;?></span>
+                            <?php endif;?>
+                        </div>
+                      </div>
+                      <div class="control-group <?php echo !empty($salasan2aError)?'error':'';?>">
+                        <label class="control-label">Salasana uudelleen</label>
+                        <div class="controls">
+                            <input name="salasana2" type="password" placeholder="Salasana uudelleen" value="<?php echo !empty($salasana2)?$salasana2:'';?>">
+                            <?php if ($salasana2 !== $salasana): ?>
+                                <span class="help-inline"><?php echo $salasana2Error;?></span>
                             <?php endif;?>
                         </div>
                       </div>
