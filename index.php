@@ -69,14 +69,15 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1>Album example</h1>
-      <p class="lead text-muted">Well-cummed</p>
+      <h1 class="text-secondary"Secondary link>OHI.FI</h1>
+      <p class="lead text-muted">Moro</p>
       <p>
-        <a href="lisaa_tuote.php" class="kakka">Myy/Sell</a>
-        <a href="tuotelista.php" class="pissa">Osta/Buy</a>
+        <a href="lisaa_tuote.php" class="kakka">Myy</a>
+        <a href="tuotelista.php" class="pissa">Osta</a>
       </p>
     </div>
   </section>
+
 
   <div class="album py-5 bg-light">
     <div class="container">
@@ -92,28 +93,23 @@
       <div class="row">
       <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-
-<?php
-          echo '<td>'. $row['tuotenimi'] . '</td>';
-          echo '<td>'. $row['hinta'] . '</td>';
-          echo '<td>'. $row['lisatiedot'] . '</td>';
-          echo '<td>'. "<img src='img/{$row['kuva']}' width='300' height='300'>" . '</td>';
-?>
-        <!--<img src="img/stoir.png" alt="Smiley face" > -->
-          <div class="card-body">
-          <!-- 
-            <p class="card-text">This is steir. </p>
-            <p class="card-text">He lives off of kela. </p>
-            <p class="card-text">And he's proud of it. </p>
-             -->
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <?php
+                    echo '<td>'. $row['tuotenimi'] . '</td>';
+                    echo '<td>'. "<img src='img/{$row['kuva']}' width='300' height='300'>" . '</td>';
+                    echo '<td>'. $row['lisatiedot'] . '</td>';
+              ?>
+                <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
               </div>
-              <small class="text-muted">
-                  <?php
+              
+              <?php
+                  echo '<td>'. $row['hinta'] . '</td>';
+              ?>
+                  <small class="text-muted">
+              <?php
                   echo '<td>'. $row['tuotenimi'] . '</td>';
-                  ?>
+              ?>
               </small>
             </div>
           </div>
@@ -126,27 +122,7 @@
                             ?>
                             
 
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-
-          <!--<img src="img/stoir.png" alt="Smiley face" > -->
-            <div class="card-body">
-            <!-- 
-              <p class="card-text">This is steir. </p>
-              <p class="card-text">He lives off of kela. </p>
-              <p class="card-text">And he's proud of it. </p>
-               -->
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
+  
 
 <!--
 
