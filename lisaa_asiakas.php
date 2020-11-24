@@ -115,7 +115,7 @@
                         <h3>Tee asiakas</h3>
                     </div>
              
-                    <form class="form-horizontal" action="lisaa_asiakas.php" method="post">
+                    <form class="form-horizontal" action="lisaa_kayttaja.php" method="post">
                       <div class="control-group <?php echo !empty($etunimiError)?'error':'';?>">
                         <label class="control-label">Etuimi</label>
                         <div class="controls">

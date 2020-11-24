@@ -1,5 +1,10 @@
 <?php
     include 'header.php';
+    if(isset($_SESSION["loggedin"]) && ($_SESSION["kayttajaID"]) != 1 && $_SESSION["loggedin"] === false)
+    {
+        header("location: index.php");
+        exit;
+    }
 ?>
     <div class="container">
         <div class="row">
@@ -7,7 +12,7 @@
         </div>
             <div class="row">
                 <p>
-                    <a href="lisaa_asiakas.php" class="btn btn-success">Create</a>
+                    <a href="lisaa_kayttaja.php" class="btn btn-success">Create</a>
                 </p>
                     <table class="table table-striped table-bordered">
                         <thead>
