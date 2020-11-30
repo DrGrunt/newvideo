@@ -1,5 +1,11 @@
 <?php 
-  include 'header.php'; 
+  include 'header.php';
+  
+  $hakusana = '';
+
+  if(!empty($_POST)){
+    $hakusana = $_POST['haku'];
+  }
 ?>
 
 
@@ -76,8 +82,8 @@
         <a href="tuotelista.php" class="pissa">Osta</a>
       </p>
       <form action="" method="post">
-      <input type="text" name="search">
-      <input type="submit" name="submit" value="Search">
+        <input type="text" name="haku" id="haku" placeholder="Hakusana" class="form-control mr-sm-2">
+        <button type="submit" class="btn btn-outline-success">Hae</button>
       </form>
     </div>
   </section>
@@ -89,7 +95,7 @@
     <?php
      include 'database.php';
     $pdo = Database::connect();
-    $sql = 'SELECT * FROM tuote';
+    $sql = 'SELECT * FROM tuote WHERE tuotenimi LIKE "%' . $hakusana . '%"';
     foreach ($pdo->query($sql) as $row) {
                             
       ?>
