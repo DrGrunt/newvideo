@@ -23,18 +23,6 @@ open-iconic/font/fonts/open-iconic.ttf
 open-iconic/font/fonts/open-iconic.woff
 open-iconic/ICON-LICENSE
 open-iconic/package.json
-open-iconic/png/account-login-2x.png
-open-iconic/png/account-login-3x.png
-open-iconic/png/account-login-4x.png
-open-iconic/png/account-login-6x.png
-open-iconic/png/account-login-8x.png
-open-iconic/png/account-login.png
-open-iconic/png/account-logout-2x.png
-open-iconic/png/account-logout-3x.png
-open-iconic/png/account-logout-4x.png
-open-iconic/png/account-logout-6x.png
-open-iconic/png/account-logout-8x.png
-open-iconic/png/account-logout.png
 open-iconic/png/action-redo-2x.png
 open-iconic/png/action-redo-3x.png
 open-iconic/png/action-redo-4x.png
@@ -1362,7 +1350,6 @@ open-iconic/png/zoom-out-6x.png
 open-iconic/png/zoom-out-8x.png
 open-iconic/png/zoom-out.png
 open-iconic/README.md
-open-iconic/sprite/open-iconic.html
 open-iconic/sprite/open-iconic.min.svg
 open-iconic/sprite/open-iconic.svg
 open-iconic/sprite/sprite.html

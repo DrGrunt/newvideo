@@ -75,6 +75,10 @@
         <a href="lisaa_tuote.php" class="kakka">Myy</a>
         <a href="tuotelista.php" class="pissa">Osta</a>
       </p>
+      <form action="" method="post">
+      <input type="text" name="search">
+      <input type="submit" name="submit" value="Search">
+      </form>
     </div>
   </section>
 
