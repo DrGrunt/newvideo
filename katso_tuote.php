@@ -62,13 +62,6 @@
                             <input name="hinta" readonly type="text" placeholder="hinta" value="<?php echo $data['hinta']; ?>">
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="kayttaja" class="col-sm-2 col-form-label">Luoja</label>
-                            <div class="col-sm-10">
-                                <input name="kayttaja" readonly type="text" placeholder="kayttaja" value="<?php print $data['kayttajaID']; ?>">
-                            </div>
-                        </div>
                         <?php
                         $kayttajaID = $data['kayttajaID'];
                             $pdo = Database::connect();
@@ -99,6 +92,13 @@
                             <label for="postitoimipaikka" class="col-sm-2 col-form-label">Tekijän paikkakunta</label>
                             <div class="col-sm-10">
                                 <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="kayttaja" class="col-sm-2 col-form-label">Luoja</label>
+                            <div class="col-sm-10">
+                                <input name="kayttaja" readonly type="text" placeholder="kayttaja" value="Jésus">
                             </div>
                         </div>
 
