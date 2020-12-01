@@ -19,9 +19,9 @@
         $q = $pdo->prepare($sql);
         $q->execute(array($tuoteID));
         $data = $q->fetch(PDO::FETCH_ASSOC);
-        echo "<h2>{$data['tuotenimi']}</h2>";
-        echo "<img src='img/{$data['kuva']}'width='300' height='300' >";
         Database::disconnect();
+
+
     }
 ?>
  
@@ -31,7 +31,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="carousel.css"/>
     <link   href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <title>OHI</title>
@@ -41,24 +41,49 @@
     <div class="container">
      
                 <div class="span10 offset1">
-                    <div class="row">
-                        <h3>tuote tiedot</h3>
+                    <div class="row justify-content-md-center">
+                        <h3 style="color:black">tuote tiedot</h3>
                     </div>
+
+
+                    <div style="color:tomato" class="row justify-content-md-center">
+                        <?php echo "<h2 align=center>".$data['tuotenimi']."</h2>";?>
+
+                    </div>
+                    <div class="row justify-content-md-center">
+                            <?php  echo "<img src='img/".$data['kuva']."' width='300' height='300'>"; ?>
+                                
+                    </div>
+
+                    <div class="row justify-content-md-center">
+                        <h3 style="color:white">f</h3>
+                    </div>
+                    <div class="row justify-content-md-center">
+                        <h3 style="color:white">f</h3>
+                    </div>
+                    
+
+                    <div class="form-actions">
+                            <a class="btn btn-warning" src="https://www.adl.org/sites/default/files/styles/max_650x650/public/2019-09/trollface-1.jpg?itok=L8m1c1u4">Myyjän tiedot</a>
+                        </div>
+                    
 
                     
                     <div class="form-horizontal" >
 
-
-                        <div class="form-group row">
+                    <div>
+                    <img src="https://www.adl.org/sites/default/files/styles/max_650x650/public/2019-09/trollface-1.jpg?itok=L8m1c1u4">
+                    </div>
+                        <div class="row justify-content-md-center"style="color:tomato">
                             <label for="lisatiedot" class="col-sm-2 col-form-label">Lisätiedot</label>
-                            <div class="col-sm-10">
+                            <div class="row justify-content-md-center">
                             <textarea readonly name="lisatiedot" cols="23" rows="5"><?php echo $data['lisatiedot']; ?></textarea>
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row justify-content-md-center"style="color:tomato">
                             <label for="hinta" class="col-sm-2 col-form-label">Hinta</label>
-                            <div class="col-sm-10">
+                            <div class="row justify-content-md-center">
                             <input name="hinta" readonly type="text" placeholder="hinta" value="<?php echo $data['hinta']; ?>">
                             </div>
                         </div>
@@ -74,30 +99,30 @@
                             $data = $q->fetch(PDO::FETCH_ASSOC);
                             Database::disconnect();
                         ?>
-                        <div class="form-group row">
+                        <div class="row justify-content-md-center"style="color:tomato">
                             <label for="etunimi" class="col-sm-2 col-form-label">Tekijän etunimi</label>
-                            <div class="col-sm-10">
+                            <div class="row justify-content-md-center">
                                 <input name="etunimi" readonly type="text" placeholder="etunimi" value="<?php echo $data['etunimi']; ?>">
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row justify-content-md-center"style="color:tomato">
                             <label for="sahkoposti" class="col-sm-2 col-form-label">Tekijän sähköposti</label>
-                            <div class="col-sm-10">
+                            <div class="row justify-content-md-center">
                                 <input name="sahkoposti" readonly type="text" placeholder="sahkoposti" value="<?php echo $data['sahkoposti']; ?>">
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row justify-content-md-center"style="color:tomato">
                             <label for="postitoimipaikka" class="col-sm-2 col-form-label">Tekijän paikkakunta</label>
-                            <div class="col-sm-10">
+                            <div class="row justify-content-md-center">
                                 <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row justify-content-md-center"style="color:tomato">
                             <label for="kayttaja" class="col-sm-2 col-form-label">Luoja</label>
-                            <div class="col-sm-10">
+                            <div class="row justify-content-md-center">
                                 <input name="kayttaja" readonly type="text" placeholder="kayttaja" value="Jésus">
                             </div>
                         </div>

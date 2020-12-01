@@ -40,6 +40,13 @@
     <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
   </head>
   <body style="background-color:#90gff8;">
+
+  <style>
+  body {
+    background-color: #cccccc;
+   }
+    </style>
+  
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <img src="img/stoir.png" alt="Smiley face" height="42" width="42">
