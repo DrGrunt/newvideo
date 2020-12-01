@@ -1,8 +1,7 @@
-<?php
-     
+<?php 
     require 'header.php';
+    if( isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
     require 'database.php';
- 
     if ( !empty($_POST)) {
         // keep track validation errors
         $tuotenimiError = null;
@@ -14,6 +13,7 @@
         $lisatiedot =  $_POST['lisatiedot'];
         $hinta = $_POST['hinta'];
         $kuva = basename($_FILES['kuva']['name']);
+        $kayttajaID = $_SESSION['kayttajaID'];
         // validate input
         $valid = true;
         if (empty($tuotenimi)) {
@@ -42,9 +42,9 @@
             move_uploaded_file($tmpName, 'img/' . $name);
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO tuote (tuotenimi,lisatiedot,hinta,kuva) values(?, ?, ?, ?)";
+            $sql = "INSERT INTO tuote (tuotenimi,lisatiedot,hinta,kuva,kayttajaID) values(?, ?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($tuotenimi,$lisatiedot,$hinta,$kuva));
+            $q->execute(array($tuotenimi,$lisatiedot,$hinta,$kuva,$kayttajaID));
             Database::disconnect();
             header("Location: tuotelista.php");
         }
@@ -58,7 +58,7 @@
 
 <div class="container">
     
-    <div class="card bg-info">
+    <div class="card">
         <div class="card-header">
             <h3>Tee tuate</h3>
         </div>
@@ -104,13 +104,16 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="form-actions">
                     <button type="submit" class="btn btn-success">Create</button>
                     <a class="btn" href="index.php">Etusivu</a>
                     <a class="btn" href="tuotelista.php">Tuotelista</a>
                 </div>
-                    
+                <?php else:
+                    header("location: index.php");
+                    exit;
+                    endif; 
+                ?>
             </form>
         </div>
     </div>
