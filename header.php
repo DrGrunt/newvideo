@@ -29,11 +29,36 @@
         -ms-user-select: none;
         user-select: none;
       }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
       }
+      .kakka {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 28px;
+        font-size: 32px;
+        cursor: pointer;
+        text-align: center;
+      }
+      .pissa {
+        width: 100%;
+        height: 50%;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        padding: 2px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        text-align: center;
+      }
+      
+    </style>
     </style>
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
@@ -63,9 +88,8 @@
                     </li>
                 <?php endif; ?>
                 </ul>
-                <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Eti</button>
+                <form class="form-inline mt-8 mt-md-0">
+                <a href="lisaa_tuote.php" class="pissa">Myy tuote</a>
                 </form>
 
                 <?php if( isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ): ?>
