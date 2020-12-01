@@ -28,45 +28,7 @@
 <meta name="theme-color" content="#563d7c">
 
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      .kakka {
-        width: 100%;
-        height: 100%;
-        border: none;
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 28px;
-        font-size: 32px;
-        cursor: pointer;
-        text-align: center;
-      }
-      .pissa {
-        width: 100%;
-        height: 100%;
-        border: none;
-        background-color: #800000;
-        color: white;
-        padding: 14px 28px;
-        font-size: 32px;
-        cursor: pointer;
-        text-align: center;
-      }
-      
-    </style>
+    
     <!-- Custom styles for this template -->
   </head>
   <body>
@@ -78,8 +40,7 @@
       <h1 class="text-secondary"Secondary link>OHI.FI</h1>
       <p class="lead text-muted">Moro</p>
       <p>
-        <a href="lisaa_tuote.php" class="kakka">Myy</a>
-        <a href="tuotelista.php" class="pissa">Osta</a>
+        <a href="lisaa_tuote.php" class="kakka">Listaa Myyntiin</a>
       </p>
       <form action="" method="post">
         <input type="text" name="haku" id="haku" placeholder="Hakusana" class="form-control mr-sm-2">
