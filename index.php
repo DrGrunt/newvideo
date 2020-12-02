@@ -39,9 +39,9 @@
     <div class="container">
       <h1 class="text-secondary"Secondary link>OHI.FI</h1>
       <p class="lead text-muted">Moro</p>
-      <p>
+      <div class="input-group mb-3">
         <a href="lisaa_tuote.php" class="kakka">Listaa Myyntiin</a>
-      </p>
+      </div>
       <form action="" method="post">
         <input type="text" name="haku" id="haku" placeholder="Hakusana" class="form-control mr-sm-2">
         <button type="submit" class="btn btn-outline-success">Hae</button>
@@ -72,7 +72,7 @@
                     <?php
                             include 'database.php';
                             $pdo = Database::connect();
-                            $sql = 'SELECT * FROM tuote';
+                            $sql = 'SELECT * FROM tuote WHERE tuotenimi LIKE "%' . $hakusana . '%"';
                             foreach ($pdo->query($sql) as $row) {
                                 echo '<tr>';
                                 echo '<td>'. "<img src='img/{$row['kuva']}' width='100' height='100'>" . '</td>';
