@@ -48,42 +48,42 @@
                         <div class="form-group row">
                             <label for="kayttajatunnus" class="col-sm-2 col-form-label">Käyttäjätunnus</label>
                             <div class="col-sm-10">
-                             <input name="kayttajatunnus" readonly type="text" placeholder="kayttajatunnus" value="<?php echo $data['kayttajatunnus']; ?>">
+                                <input name="kayttajatunnus" readonly type="text" placeholder="kayttajatunnus" value="<?php echo $data['kayttajatunnus']; ?>">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="etunimi" class="col-sm-2 col-form-label">Etunimi</label>
                             <div class="col-sm-10">
-                             <input name="etunimi" readonly type="text" placeholder="etunimi" value="<?php echo $data['etunimi']; ?>">
+                                <input name="etunimi" readonly type="text" placeholder="etunimi" value="<?php echo $data['etunimi']; ?>">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="sukunimi" class="col-sm-2 col-form-label">Sukunimi</label>
                             <div class="col-sm-10">
-                            <input name="sukunimi" readonly type="text" placeholder="sukunimi" value="<?php echo $data['sukunimi']; ?>">   
+                                <input name="sukunimi" readonly type="text" placeholder="sukunimi" value="<?php echo $data['sukunimi']; ?>">   
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="postitoimipaikka" class="col-sm-2 col-form-label">Postitoimipaikka</label>
                             <div class="col-sm-10">
-                            <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
+                                <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="sahkoposti" class="col-sm-2 col-form-label">Sähköposti</label>
                             <div class="col-sm-10">
-                             <input name="sahkoposti" readonly type="text" placeholder="sahkoposti" value="<?php echo $data['sahkoposti']; ?>">
+                                <input name="sahkoposti" readonly type="text" placeholder="sahkoposti" value="<?php echo $data['sahkoposti']; ?>">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="puhelin" class="col-sm-2 col-form-label">Puhelinnumero</label>
                             <div class="col-sm-10">
-                             <input name="puhelin" readonly type="text" placeholder="puhelin" value="<?php echo $data['puhelinnumero']; ?>">
+                                <input name="puhelin" readonly type="text" placeholder="puhelin" value="<?php echo $data['puhelinnumero']; ?>">
                             </div>
                         </div>
 
