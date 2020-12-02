@@ -3,6 +3,7 @@
     include 'header.php';
     require 'database.php';
     $tuoteID = null;
+    $tekijaID = null;
     if ( !empty($_GET['id'])) {
         $tuoteID = $_REQUEST['id'];
     }
@@ -12,11 +13,14 @@
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $table = 'tuote';
         $sql = "SELECT * FROM tuote where tuoteID = ?";
         $pdo->exec("set names utf8");
         $q = $pdo->prepare($sql);
         $q->execute(array($tuoteID));
         $data = $q->fetch(PDO::FETCH_ASSOC);
+        echo "<h2>{$data['tuotenimi']}</h2>";
+        echo "<img src='img/{$data['kuva']}'width='300' height='300' >";
         Database::disconnect();
     }
 ?>
@@ -38,18 +42,12 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>videotiedot</h3>
+                        <h3>tuote tiedot</h3>
                     </div>
 
                     
                     <div class="form-horizontal" >
 
-                        <div class="form-group row">
-                            <label for="tuotenimi" class="col-sm-2 col-form-label">->Tuotenimi</label>
-                            <div class="col-sm-10">
-                             <input name="tuotenimi" readonly type="text" placeholder="tuotenimi" value="<?php echo $data['tuotenimi']; ?>">
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label for="lisatiedot" class="col-sm-2 col-form-label">Lisätiedot</label>
@@ -64,15 +62,45 @@
                             <input name="hinta" readonly type="text" placeholder="hinta" value="<?php echo $data['hinta']; ?>">
                             </div>
                         </div>
-
+                        <?php
+                        $kayttajaID = $data['kayttajaID'];
+                            $pdo = Database::connect();
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $table = 'kayttaja';
+                            $sql = "SELECT * FROM kayttaja where kayttajaID = ?";
+                            $pdo->exec("set names utf8");
+                            $q = $pdo->prepare($sql);
+                            $q->execute(array($kayttajaID));
+                            $data = $q->fetch(PDO::FETCH_ASSOC);
+                            Database::disconnect();
+                        ?>
                         <div class="form-group row">
-                            <label for="kuva" class="col-sm-2 col-form-label">Kuva</label>
+                            <label for="etunimi" class="col-sm-2 col-form-label">Tekijän etunimi</label>
                             <div class="col-sm-10">
-                                <input name="kuva" readonly type="text" placeholder="kuva" value="<?php echo $data['kuva']; ?>">
+                                <input name="etunimi" readonly type="text" placeholder="etunimi" value="<?php echo $data['etunimi']; ?>">
                             </div>
                         </div>
 
-                        
+                        <div class="form-group row">
+                            <label for="sahkoposti" class="col-sm-2 col-form-label">Tekijän sähköposti</label>
+                            <div class="col-sm-10">
+                                <input name="sahkoposti" readonly type="text" placeholder="sahkoposti" value="<?php echo $data['sahkoposti']; ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="postitoimipaikka" class="col-sm-2 col-form-label">Tekijän paikkakunta</label>
+                            <div class="col-sm-10">
+                                <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="kayttaja" class="col-sm-2 col-form-label">Luoja</label>
+                            <div class="col-sm-10">
+                                <input name="kayttaja" readonly type="text" placeholder="kayttaja" value="Jésus">
+                            </div>
+                        </div>
 
                         <div class="form-actions">
                             <a class="btn btn-warning" href="tuotelista.php">Takas</a>

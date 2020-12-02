@@ -2,21 +2,21 @@
 
     include 'header.php';
     require 'database.php';
-    $_SESSION["kayttajaID"] = $kayttajaID;
-    $kayttajaID = null;
+    $id = null;
     if ( !empty($_GET['id'])) {
-        $kayttajaID = $_REQUEST['id'];
+        $id = $_REQUEST['id'];
     }
      
-    if ( null==$kayttajaID ) {
-        //header("Location: index.php");
+    if ( null==$id ) {
+        header("Location: index.php");
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM kayttaja where kayttajaID = ?".$kayttajaID;
+        $table = 'kayttaja';
+        $sql = "SELECT * FROM kayttaja where kayttajaID = ?";
         $pdo->exec("set names utf8");
         $q = $pdo->prepare($sql);
-        $q->execute(array($kayttajaID));
+        $q->execute(array($id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
         Database::disconnect();
     }
@@ -62,35 +62,28 @@
                         <div class="form-group row">
                             <label for="sukunimi" class="col-sm-2 col-form-label">Sukunimi</label>
                             <div class="col-sm-10">
-                            <textarea readonly name="sukunimi" cols="23" rows="5"><?php echo $data['sukunimi']; ?></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="lahiosoite" class="col-sm-2 col-form-label">Lahiosoite</label>
-                            <div class="col-sm-10">
-                            <input name="lahiosoite" readonly type="text" placeholder="lahiosoite" value="<?php echo $data['lahiosoite']; ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="postinumero" class="col-sm-2 col-form-label">Postinumero</label>
-                            <div class="col-sm-10">
-                            <input name="postinumero" readonly type="text" placeholder="postinumero" value="<?php echo $data['postinumero']; ?>">
+                            <input name="sukunimi" readonly type="text" placeholder="sukunimi" value="<?php echo $data['sukunimi']; ?>">   
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="postitoimipaikka" class="col-sm-2 col-form-label">Postitoimipaikka</label>
                             <div class="col-sm-10">
-                             <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
+                            <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="sahkoposti" class="col-sm-2 col-form-label">Sähköposti</label>
+                            <div class="col-sm-10">
+                             <input name="sahkoposti" readonly type="text" placeholder="sahkoposti" value="<?php echo $data['sahkoposti']; ?>">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="puhelin" class="col-sm-2 col-form-label">Puhelinnumero</label>
                             <div class="col-sm-10">
-                             <input name="puhelin" readonly type="text" placeholder="puhelin" value="<?php echo $data['puhelin']; ?>">
+                             <input name="puhelin" readonly type="text" placeholder="puhelin" value="<?php echo $data['puhelinnumero']; ?>">
                             </div>
                         </div>
 

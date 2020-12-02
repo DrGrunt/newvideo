@@ -8,9 +8,8 @@
         $etunimiError = null;
         $sukunimiError = null;
         $sahkopostiError = null;
-        $postinumeroError = null;
         $postitoimipaikkaError = null;
-        $puhelinError = null;
+        $puhelinnumeroError = null;
         $kayttajatunnusError = null;
         $salasanaError = null;
          
@@ -18,10 +17,9 @@
         $etunimi = $_POST['etunimi'];
         $sukunimi =  $_POST['sukunimi'];
         $sahkoposti = $_POST['sahkoposti'];
-        $postinumero = $_POST['postinumero'];
         $postitoimipaikka = $_POST['postitoimipaikka'];
-        $puhelin = $_POST['puhelin'];
-        $kayttajatunus = $_POST['kayttajatunnus'];
+        $puhelinnumero = $_POST['puhelinnumero'];
+        $kayttajatunnus = $_POST['kayttajatunnus'];
         $salasana = $_POST['salasana'];
          
         // validate input
@@ -43,19 +41,14 @@
             $sahkopostiError = 'Lisää se OIKEA sähköposti bruh';
             $valid = false;
         }
-
-        if (empty($postinumero)) {
-            $postinumeroError = 'Kuntas numero';
-            $valid = false;
-        }
          
         if (empty($postitoimipaikka)) {
             $postitoimipaikkaError = 'Kuntas nimi';
             $valid = false;
         }
 
-        if (empty($puhelin)) {
-            $puhelinError = 'Lait sin puhelinnumero';
+        if (empty($puhelinnumero)) {
+            $puhelinnumeroError = 'Lait sin puhelinnumero';
             $valid = false;
         }
 
@@ -71,13 +64,15 @@
          
         // insert data
         if ($valid) {
+            $salasana = password_hash($salasana, PASSWORD_DEFAULT);
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO kayttaja (etunimi,sukunimi,sahkoposti,postinumero,postitoimipaikka,puhelin,kayttajatunnus,salasana) values(?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO kayttaja (etunimi,sukunimi,sahkoposti,postitoimipaikka,puhelinnumero,kayttajatunnus,salasana) values(?, ?, ?, ?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($etunimi,$sukunimi,$sahkoposti,$postinumero,$postitoimipaikka,$puhelin,$kayttajatunnus,$salasana));
+			$pdo->exec("set names utf8");
+            $q->execute(array($etunimi,$sukunimi,$sahkoposti,$postitoimipaikka,$puhelinnumero,$kayttajatunnus,$salasana));
             Database::disconnect();
-            header("Location: kayttaja.php");
+            header("Location: sisaan.php");
         }
     }
 ?>
@@ -100,11 +95,7 @@
         </div>
     </div> <!-- /container -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+   
   </body>
  
 <body style="background-color:#90fff8;">
@@ -115,97 +106,71 @@
                         <h3>Tee usari</h3>
                     </div>
              
-                    <form class="form-horizontal" action="kayttaja.php" method="post">
-                      <div class="control-group <?php echo !empty($etunimiError)?'error':'';?>">
-                        <label class="control-label">Etuimi</label>
-                        <div class="controls">
+                    <form class="form-horizontal" action="lisaa_kayttaja.php" method="post">
+                      <div class="control-group row <?php echo !empty($etunimiError)?'error':'';?>">
+                        <label class="col-sm-4">Etuimi</label>
+                        <div class="col-sm-10">
                             <input name="etunimi" type="text"  placeholder="Etunimi" value="<?php echo !empty($etunimi)?$etunimi:'';?>">
                             <?php if (!empty($etunimiError)): ?>
                                 <span class="help-inline"><?php echo $etunimiError;?></span>
                             <?php endif; ?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($sukunimiError)?'error':'';?>">
-                        <label class="control-label">Sukunimi</label>
-                        <div class="controls">
+                      <div class="control-group row <?php echo !empty($sukunimiError)?'error':'';?>">
+                        <label class="col-sm-4">Sukunimi</label>
+                        <div class="col-sm-10">
                             <input name="sukunimi" type="text" placeholder="Sukunimi" value="<?php echo !empty($sukunimi)?$sukunimi:'';?>">
                             <?php if (!empty($sukunimiError)): ?>
                                 <span class="help-inline"><?php echo $sukunimiError;?></span>
                             <?php endif;?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($sahkopostiError)?'error':'';?>">
-                        <label class="control-label">Sähköposti</label>
-                        <div class="controls">
+                      <div class="control-group row <?php echo !empty($sahkopostiError)?'error':'';?>">
+                        <label class="col-sm-4">Sähköposti</label>
+                        <div class="col-sm-10">
                             <input name="sahkoposti" type="text"  placeholder="Sähköposti" value="<?php echo !empty($sahkoposti)?$sahkoposti:'';?>">
                             <?php if (!empty($sahkopostiError)): ?>
                                 <span class="help-inline"><?php echo $sahkopostiError;?></span>
                             <?php endif;?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($henkilotunnusError)?'error':'';?>">
-                        <label class="control-label">Henkilötunnus</label>
-                        <div class="controls">
-                            <input name="henkilotunnus" type="text" placeholder="Henkilötunnus" value="<?php echo !empty($henkilotunnus)?$henkilotunnus:'';?>">
-                            <?php if (!empty($henkilotunnusError)): ?>
-                                <span class="help-inline"><?php echo $henkilotunnusError;?></span>
-                            <?php endif;?>
-                        </div>
-                      </div>
-                      <div class="control-group <?php echo !empty($lahiosoiteError)?'error':'';?>">
-                        <label class="control-label">Lähiosoite</label>
-                        <div class="controls">
-                            <input name="lahiosoite" type="text"  placeholder="Lähiosoite" value="<?php echo !empty($lahiosoite)?$lahiosoite:'';?>">
-                            <?php if (!empty($lahiosoiteError)): ?>
-                                <span class="help-inline"><?php echo $lahiosoiteError;?></span>
-                            <?php endif;?>
-                        </div>
-                      </div>
-                      <div class="control-group <?php echo !empty($postinumeroError)?'error':'';?>">
-                        <label class="control-label">Postinumero</label>
-                        <div class="controls">
-                            <input name="postinumero" type="text" placeholder="Postinumero" value="<?php echo !empty($postinumero)?$postinumero:'';?>">
-                            <?php if (!empty($postinumeroError)): ?>
-                                <span class="help-inline"><?php echo $postinumeroError;?></span>
-                            <?php endif;?>
-                        </div>
-                      </div>
-                      <div class="control-group <?php echo !empty($postitoimipaikkaError)?'error':'';?>">
-                        <label class="control-label">Postitoimipaikka</label>
-                        <div class="controls">
+                      <div class="control-group row <?php echo !empty($postitoimipaikkaError)?'error':'';?>">
+                        <label class="col-sm-4">Postitoimipaikka</label>
+                        <div class="col-sm-10">
                             <input name="postitoimipaikka" type="text"  placeholder="Postitoimipaikka" value="<?php echo !empty($postitoimipaikka)?$postitoimipaikka:'';?>">
                             <?php if (!empty($postitoimipaikkaError)): ?>
                                 <span class="help-inline"><?php echo $postitoimipaikkaError;?></span>
                             <?php endif;?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($puhelinError)?'error':'';?>">
-                        <label class="control-label">Puhelinnumero</label>
-                        <div class="controls">
-                            <input name="puhelin" type="text" placeholder="Puhelinnumero" value="<?php echo !empty($puhelin)?$puhelin:'';?>">
-                            <?php if (!empty($puhelinError)): ?>
-                                <span class="help-inline"><?php echo $puhelinError;?></span>
+                      <div class="control-group row <?php echo !empty($puhelinnumeroError)?'error':'';?>">
+                        <label class="col-sm-4">Puhelinnumero</label>
+                        <div class="col-sm-10">
+                            <input name="puhelinnumero" type="text" placeholder="Puhelinnumero" value="<?php echo !empty($puhelinnumero)?$puhelinnumero:'';?>">
+                            <?php if (!empty($puhelinnumeroError)): ?>
+                                <span class="help-inline"><?php echo $puhelinnumeroError;?></span>
                             <?php endif;?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($kayttajatunnusError)?'error':'';?>">
-                        <label class="control-label">Käyttäjätunnus</label>
-                        <div class="controls">
+                      <div class="control-group row <?php echo !empty($kayttajatunnusError)?'error':'';?>">
+                        <label class="col-sm-4">Käyttäjätunnus</label>
+                        <div class="col-sm-10">
                             <input name="kayttajatunnus" type="text" placeholder="Käyttäjätunnus" value="<?php echo !empty($kayttajatunnus)?$kayttajatunnus:'';?>">
                             <?php if (!empty($kayttajatunnusError)): ?>
                                 <span class="help-inline"><?php echo $kayttajatunnusError;?></span>
                             <?php endif;?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($salasanaError)?'error':'';?>">
-                        <label class="control-label">Salasana</label>
-                        <div class="controls">
+                      <div class="control-group row <?php echo !empty($salasanaError)?'error':'';?>">
+                        <label class="col-sm-4">Salasana</label>
+                        <div class="col-sm-10">
                             <input name="salasana" type="password" placeholder="Salasana" value="<?php echo !empty($salasana)?$salasana:'';?>">
                             <?php if (!empty($salasanaError)): ?>
                                 <span class="help-inline"><?php echo $salasanaError;?></span>
                             <?php endif;?>
                         </div>
                       </div>
+                      
                       <div class="form-actions">
                           <button type="submit" class="btn btn-success">Create</button>
                           <a class="btn" href="index.php">Back</a>

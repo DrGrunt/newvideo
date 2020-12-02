@@ -1,3 +1,4 @@
+<?php
 $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT * FROM asiakas where asiakasID = ?";
@@ -6,3 +7,4 @@ $pdo = Database::connect();
         $q->execute(array($asiakasID));
         $data = $q->fetch(PDO::FETCH_ASSOC);
         Database::disconnect();
+?>

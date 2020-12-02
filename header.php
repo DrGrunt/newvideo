@@ -29,19 +29,45 @@
         -ms-user-select: none;
         user-select: none;
       }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
       }
+      .kakka {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 28px;
+        font-size: 32px;
+        cursor: pointer;
+        text-align: center;
+      }
+      .pissa {
+        width: 100%;
+        height: 50%;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        padding: 2px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        text-align: center;
+      }
+      
+    </style>
     </style>
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
     <link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
   </head>
-  <body>
+  <body style="background-color:#90gff8;">
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <img src="img/stoir.png" alt="Smiley face" height="42" width="42">
             <a class="navbar-brand" href="index.php"><?php echo SITENAME; ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,6 +75,11 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                 <?php if( isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ): ?>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="kayttaja.php?id=<?php echo ($_SESSION["kayttajaID"])?>">Profiili <span class="sr-only"></span></a>
+                  </li>
+                <?php endif; ?>
+                <?php if( isset($_SESSION["loggedin"]) && ($_SESSION["kayttajaID"]) == 1 && $_SESSION["loggedin"] === true ): ?>
                     <li class="nav-item active">
                         <a class="nav-link" href="asiakas.php">Asiakas <span class="sr-only"></span></a>
                     </li>
@@ -57,9 +88,8 @@
                     </li>
                 <?php endif; ?>
                 </ul>
-                <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Eti</button>
+                <form class="form-inline mt-8 mt-md-0">
+                <a href="lisaa_tuote.php" class="pissa">Myy tuote</a>
                 </form>
 
                 <?php if( isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ): ?>

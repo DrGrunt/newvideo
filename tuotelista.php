@@ -12,10 +12,9 @@
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                                <th>Tuotenimi</th>
-                                <th>Hinta</th>
-                                <th>Lisatiedot</th>
                                 <th>Kuva</th>
+                                <th>Nimi/Hinta</th>
+                                <th>Lisätiedot</th>
                                 <th>napullat</th>
                         </tr>
                         </thead>
@@ -26,21 +25,17 @@
                             $sql = 'SELECT * FROM tuote';
                             foreach ($pdo->query($sql) as $row) {
                                 echo '<tr>';
-                                echo '<td>'. $row['tuotenimi'] . '</td>';
-                                echo '<td>'. $row['hinta'] . '</td>';
-                                echo '<td>'. $row['lisatiedot'] . '</td>';
-                                //echo '<td>'. $row['kuva'] . '</td>';
-                                echo "<td><img src=img/".$row['kuva']."'></td>";
-                                //
+                                echo '<td>'. "<img src='img/{$row['kuva']}' width='100' height='100'>" . '</td>';
                                 echo '<td>';
-                                echo '<a class="btn btn-info" href="katso_tuote.php?id='.$row['tuoteID'].'">Tarkista</a>';
-                                echo ' ';
-                                echo '<a class="btn btn-success" href="paivita_tuote.php?id='.$row['tuoteID'].'">Päivitä</a>';
-                                echo ' ';
-                                echo '<a class="btn btn-danger" href="poista_tuote.php?id='.$row['tuoteID'].'">Poista</a>';
+                                echo '<h3>'. $row['tuotenimi'] .'</h3>';
+                                echo '<h6>'. $row['hinta'] . "€" . '</h6>';
                                 echo '</td>';
-                         echo '</td>';
-                    echo '</tr>';
+                                echo '<td>'. $row['lisatiedot'] . '</td>';
+                                echo '<td>';
+                                echo '<a class="btn btn-info" href="katso_tuote.php?id='.$row['tuoteID'].'">Katso lisää</a>';
+                                echo '</td>';
+                                 echo '</td>';
+                                 echo '</tr>';
                             }
                             Database::disconnect();
                         ?>

@@ -48,8 +48,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ){
                             
                             $_SESSION["loggedin"] = true;
                             $_SESSION["kayttajaID"] = $id;
-                            $_SESSION["kayttajatunnus"] = $kayttajatunnus;                            
-                            
+                            $_SESSION["kayttajatunnus"] = $kayttajatunnus;
                             header("location: asiakas.php");
                         } else{
                             $salasanaError = "Salasana väärä";
@@ -97,6 +96,9 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ){
 
         <div class="form-group row">
             <input type="submit" class="btn btn-primary" value="Kirjaudu">
+        </div>
+        <div class="form-group row">
+            <a href="lisaa_kayttaja.php" class="btn btn-warning" role="button">Luo käyttäjä</a>
         </div>
 
     </form>
