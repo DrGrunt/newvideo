@@ -3,30 +3,45 @@
     require 'database.php';
     $id = 0;
      
-    if ( !empty($_GET['id'])) {
+    if ( !empty($_GET['id'])) 
+      {
         $id = $_REQUEST['id'];
+        
+      }
+
+      if ( !empty($_POST) ) 
+      {
+        $id = $_POST['id'];
+
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM asiakas where asiakasID = ?";
-        $sql = 'SELECT *, CONCAT(etunimi, " ", sukunimi) nimi FROM asiakas where asiakasID = ?';
+        $sql = "DELETE FROM tuote  WHERE tuoteID = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($id));
+        Database::disconnect();
+        header("Location: index.php");
+
+        
+      } 
+        else 
+      {
+        // delete data
+        
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT * FROM tuote where tuoteID = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
         Database::disconnect();
-    }
-     
-    if ( !empty($_POST)) {
-        // keep track post values
-        $id = $_POST['id'];
-         
-        // delete data
-        $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "DELETE FROM asiakas  WHERE asiakasID = ?";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($id));
-        Database::disconnect();
-        header("Location: asiakas.php");
+        if(isset($_SESSION["loggedin"]) && ($_SESSION["kayttajaID"]) == ($data["kayttajaID"]) && $_SESSION["loggedin"] === true)
+        {
+        }
+        else
+        {
+            header("location: index.php");
+            exit;
+        }
          
     }
 ?>
@@ -41,10 +56,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>cdon mutta hyvä</title>
+    <title>OHI</title>
   </head>
   <body style="background-color:#90fff8;">
-    <h1>Poista asiakas</h1>
+    <h1>Poista tuote</h1>
     
     <div class="container">
      
@@ -52,12 +67,12 @@
                     <div class="row">
                     </div>
                      
-                    <form class="form-horizontal" action="poista_asiakas.php" method="post">
+                    <form class="form-horizontal" action="poista_tuote.php" method="post">
                       <input type="hidden" name="id" value="<?php echo $id;?>"/>
-                      <p class="alert alert-error">Haluatko poistaa asiakkaan, <?php echo $data['etunimi'] . ' ' . $data['sukunimi'] ?>, tiedot?</p>
+                      <p class="alert alert-error">Haluatko poistaa tuotteen <?php echo $data['tuotenimi']?>?</p>
                       <div class="form-actions">
                           <button type="submit" class="btn btn-danger">Kyllä</button>
-                          <a class="btn btn-outline-black" href="asiakas.php">En</a>
+                          <a class="btn btn-outline-black" href="kayttaja.php?id=<?php echo $data['kayttajaID']?>">En</a>
                         </div>
                     </form>
                 </div>

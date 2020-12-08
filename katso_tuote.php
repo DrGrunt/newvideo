@@ -55,24 +55,24 @@
                                 
                     </div>
 
-                    <div class="row justify-content-md-center">
+                    <!-- <div class="row justify-content-md-center">
                         <h3 style="color:white">f</h3>
                     </div>
                     <div class="row justify-content-md-center">
                         <h3 style="color:white">f</h3>
-                    </div>
+                    </div> -->
                     
 
                     <div class="form-actions">
-                            <a class="btn btn-warning" src="https://www.adl.org/sites/default/files/styles/max_650x650/public/2019-09/trollface-1.jpg?itok=L8m1c1u4">Myyjän tiedot</a>
-                        </div>
+                        <?php echo '<a class="btn btn-warning" href="kayttaja.php?id='.$data['kayttajaID'].'">Ota Yhteyttä</a>';?>
+                    </div>
                     
 
                     
                     <div class="form-horizontal" >
 
                     <div>
-                    <img src="https://www.adl.org/sites/default/files/styles/max_650x650/public/2019-09/trollface-1.jpg?itok=L8m1c1u4">
+                    <!--<img src="https://www.adl.org/sites/default/files/styles/max_650x650/public/2019-09/trollface-1.jpg?itok=L8m1c1u4">-->
                     </div>
                         <div class="row justify-content-md-center"style="color:tomato">
                             <label for="lisatiedot" class="col-sm-2 col-form-label">Lisätiedot</label>
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                         <?php
-                        $kayttajaID = $data['kayttajaID'];
+                            $kayttajaID = $data['kayttajaID'];
                             $pdo = Database::connect();
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                             $table = 'kayttaja';
@@ -100,21 +100,7 @@
                             Database::disconnect();
                         ?>
                         <div class="row justify-content-md-center"style="color:tomato">
-                            <label for="etunimi" class="col-sm-2 col-form-label">Tekijän etunimi</label>
-                            <div class="row justify-content-md-center">
-                                <input name="etunimi" readonly type="text" placeholder="etunimi" value="<?php echo $data['etunimi']; ?>">
-                            </div>
-                        </div>
-
-                        <div class="row justify-content-md-center"style="color:tomato">
-                            <label for="sahkoposti" class="col-sm-2 col-form-label">Tekijän sähköposti</label>
-                            <div class="row justify-content-md-center">
-                                <input name="sahkoposti" readonly type="text" placeholder="sahkoposti" value="<?php echo $data['sahkoposti']; ?>">
-                            </div>
-                        </div>
-
-                        <div class="row justify-content-md-center"style="color:tomato">
-                            <label for="postitoimipaikka" class="col-sm-2 col-form-label">Tekijän paikkakunta</label>
+                            <label for="postitoimipaikka" class="col-sm-2 col-form-label">Myyjän paikkakunta</label>
                             <div class="row justify-content-md-center">
                                 <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
                             </div>

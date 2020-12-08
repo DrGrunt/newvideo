@@ -1,5 +1,13 @@
 <?php
     include 'header.php';
+    if(isset($_SESSION["loggedin"]) && ($_SESSION["kayttajaID"]) == 1 && $_SESSION["loggedin"] === true)
+    {
+    }
+    else
+    {
+        header("location: index.php");
+        exit;
+    }
 ?>
     <div class="container">
         <div class="row">

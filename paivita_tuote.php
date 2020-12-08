@@ -71,6 +71,14 @@
         $lisatiedot =  $data['lisatiedot'];
         $hinta = $data['hinta'];
         $kuva = $data['kuva'];
+        if(isset($_SESSION["loggedin"]) && ($_SESSION["kayttajaID"]) == ($data["kayttajaID"]) && $_SESSION["loggedin"] === true)
+        {
+        }
+        else
+        {
+            header("location: index.php");
+            exit;
+        }
     } 
 ?>
  
@@ -83,52 +91,52 @@
             <form class="body" action="paivita_tuote.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?php echo $data['tuoteID'] ;?>"> 
                 <div class="form-group row <?php echo !empty($tuotenimiError)?'alert alert-info':'';?>">
-                            <label class="col-sm-4 col-form-label">>Tuotenimi</label>
-                            <div class="col-sm-8">
-                                <input name="tuotenimi" type="text" class="form-control" placeholder="tuotenimi" value="<?php echo !empty($tuotenimi)?$tuotenimi:'';?>">
-                                <?php if (!empty($tuotenimiError)): ?>
-                                    <small class="text-muted"><?php echo $tuotenimiError;?></small>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                
+                    <label class="col-sm-4 col-form-label">>Tuotenimi</label>
+                    <div class="col-sm-8">
+                        <input name="tuotenimi" type="text" class="form-control" placeholder="<?php echo $tuotenimi?>" value="<?php echo !empty($tuotenimi)?$tuotenimi:'';?>">
+                        <?php if (!empty($tuotenimiError)): ?>
+                            <small class="text-muted"><?php echo $tuotenimiError;?></small>
+                        <?php endif; ?>
+                    </div>
+                </div>
+        
                 <div class="form-group row <?php echo !empty($hintaError)?'alert alert-info':'';?>">
-                            <label class="col-sm-4 col-form-label">>Hinta</label>
-                            <div class="col-sm-8">
-                                <input name="hinta" type="text" class="form-control" placeholder="hinta" value="<?php echo !empty($hinta)?$hinta:'';?>">
-                                <?php if (!empty($hintaError)): ?>
-                                    <small class="text-muted"><?php echo $hintaError;?></small>
-                                <?php endif; ?>
-                            </div>
-                        </div>
+                    <label class="col-sm-4 col-form-label">>Hinta</label>
+                    <div class="col-sm-8">
+                        <input name="hinta" type="text" class="form-control" placeholder="<?php echo $hinta?>" value="<?php echo !empty($hinta)?$hinta:'';?>">
+                        <?php if (!empty($hintaError)): ?>
+                            <small class="text-muted"><?php echo $hintaError;?></small>
+                        <?php endif; ?>
+                    </div>
+                </div>
 
                 <div class="form-group row <?php echo !empty($lisatiedotError)?'alert alert-info':'';?>">
-                            <label class="col-sm-4 col-form-label">>Lisatiedot</label>
-                            <div class="col-sm-8">
-                                <textarea name="lisatiedot" class="form-control" cols="23" rows="5" placeholder="Lisätiedot"><?php echo !empty($lisatiedot)?$lisatiedot:'';?></textarea>
-                                <?php if (!empty($lisatiedotError)): ?>
-                                    <small class="text-muted"><?php echo $lisatiedotError;?></small>
-                                <?php endif; ?>
-                            </div>
-                        </div>
+                    <label class="col-sm-4 col-form-label">>Lisatiedot</label>
+                    <div class="col-sm-8">
+                        <textarea name="lisatiedot" class="form-control" cols="23" rows="5" placeholder="<?php echo $lisatiedot?>"><?php echo !empty($lisatiedot)?$lisatiedot:'';?></textarea>
+                        <?php if (!empty($lisatiedotError)): ?>
+                            <small class="text-muted"><?php echo $lisatiedotError;?></small>
+                        <?php endif; ?>
+                    </div>
+                </div>
 
 
-                        <div class="form-group row <?php echo !empty($kuvaError)?'alert alert-info':'';?>">
-                            <label class="col-sm-4 col-form-label">>Kuva</label>
-                            <div class="col-sm-8">
-                                <div class="custom-file">
-                                    <input name="kuva" type="file" class="custom-file-input" placeholder="Kuva" value="<?php echo !empty($kuva)?$kuva:'';?>">
-                                    <label for="" class="custom-file-label" data-browse="Sëärch">Kuva</label>
-                                    <?php if (!empty($kuvaError)): ?>
-                                        <small class="text-muted"><?php echo $kuvaError;?></small>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
+                <div class="form-group row <?php echo !empty($kuvaError)?'alert alert-info':'';?>">
+                    <label class="col-sm-4 col-form-label">>Kuva</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input name="kuva" type="file" class="custom-file-input" placeholder="<?php echo $kuva?>" value="<?php echo !empty($kuva)?$kuva:'';?>">
+                            <label for="" class="custom-file-label" data-browse="Sëärch"><?php echo $lisatiedot?></label>
+                            <?php if (!empty($kuvaError)): ?>
+                                <small class="text-muted"><?php echo $kuvaError;?></small>
+                            <?php endif; ?>
                         </div>
+                    </div>
+                </div>
 
         <div class="form-actions">
             <button type="submit" class="btn btn-success">Päivitä</button>
-            <a class="btn" href="tuotelista.php">Bäckii</a>
+            <a class="btn" href="kayttaja.php?id=<?php echo $data['kayttajaID']?>">Bäckii</a>
         </div>
     </form>
 </div> <!-- /container -->

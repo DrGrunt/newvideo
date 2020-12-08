@@ -13,7 +13,7 @@
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $table = 'kayttaja';
-        $sql = "SELECT * FROM kayttaja where kayttajaID = ?";
+        $sql = "SELECT *, CONCAT(etunimi, ' ', sukunimi) nimi FROM kayttaja where kayttajaID = ?";
         $pdo->exec("set names utf8");
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
@@ -37,62 +37,87 @@
 <body style="background-color:#90fff8;">
     <div class="container">
      
-                <div class="span10 offset1">
-                    <div class="row">
-                        <h3>Kayttajatiedot</h3>
-                    </div>
+                <div class="row">
 
-                    
-                    <div class="form-horizontal" >
-
-                        <div class="form-group row">
+                        <div class="form-group collum">
                             <label for="kayttajatunnus" class="col-sm-2 col-form-label">Käyttäjätunnus</label>
                             <div class="col-sm-10">
                                 <input name="kayttajatunnus" readonly type="text" placeholder="kayttajatunnus" value="<?php echo $data['kayttajatunnus']; ?>">
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="etunimi" class="col-sm-2 col-form-label">Etunimi</label>
+                        <div class="form-group collum">
+                            <label for="nimi" class="col-sm-2 col-form-label">Nimi</label>
                             <div class="col-sm-10">
-                                <input name="etunimi" readonly type="text" placeholder="etunimi" value="<?php echo $data['etunimi']; ?>">
+                                <input name="nimi" readonly type="text" placeholder="nimi" value="<?php echo $data['nimi']; ?>">
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="sukunimi" class="col-sm-2 col-form-label">Sukunimi</label>
-                            <div class="col-sm-10">
-                                <input name="sukunimi" readonly type="text" placeholder="sukunimi" value="<?php echo $data['sukunimi']; ?>">   
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
+                        <div class="form-group collum">
                             <label for="postitoimipaikka" class="col-sm-2 col-form-label">Postitoimipaikka</label>
                             <div class="col-sm-10">
                                 <input name="postitoimipaikka" readonly type="text" placeholder="postitoimipaikka" value="<?php echo $data['postitoimipaikka']; ?>">
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group collum">
                             <label for="sahkoposti" class="col-sm-2 col-form-label">Sähköposti</label>
                             <div class="col-sm-10">
                                 <input name="sahkoposti" readonly type="text" placeholder="sahkoposti" value="<?php echo $data['sahkoposti']; ?>">
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group collum">
                             <label for="puhelin" class="col-sm-2 col-form-label">Puhelinnumero</label>
                             <div class="col-sm-10">
                                 <input name="puhelin" readonly type="text" placeholder="puhelin" value="<?php echo $data['puhelinnumero']; ?>">
                             </div>
                         </div>
-
+                        </div>
                         <div class="form-actions">
                             <a class="btn btn-warning" href="index.php">Etusivu</a>
                         </div>
-                        </div>
-                    </div>
+                        <div class="row">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Kuva</th>
+                                <th>Nimi/Hinta</th>
+                                <th>Lisätiedot</th>
+                                <th>NA Pullaa</th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                <?php
+                                        $pdo = Database::connect();
+                                        $sql = 'SELECT * FROM tuote WHERE kayttajaID =' . $data["kayttajaID"] . '';
+                                        foreach ($pdo->query($sql) as $row) {
+                                            echo '<tr>';
+                                            echo '<td>'. "<img src='img/{$row['kuva']}' width='100' height='100'>" . '</td>';
+                                            echo '<td>';
+                                            echo '<h3>'. $row['tuotenimi'] .'</h3>';
+                                            echo '<h6>'. $row['hinta'] . "€" . '</h6>';
+                                            echo '</td>';
+                                            echo '<td>'. $row['lisatiedot'] . '</td>';
+                                            echo '<td>';
+                                            echo '<a class="btn btn-info" href="katso_tuote.php?id='.$row['tuoteID'].'">Katso lisää</a>';
+                                            echo ' ';
+                                            if ($_SESSION['kayttajaID'] == $data['kayttajaID'])
+                                                {
+                                                    echo '<a class="btn btn-info" href="paivita_tuote.php?id=' . $row['tuoteID'] . '">Muokkaa</a>';
+                                                    echo ' ';
+                                                    echo '<a class="btn btn-danger poista" data-content="Haluatko varmasti poistaa tuotteen ' . $row['tuotenimi'] . ' ?" href="poista_tuote.php?id='.$row['tuoteID'].'">Poista</a>';
+                                                }
+                                            echo '</td>';
+                                            echo '</td>';
+                                            echo '</tr>';
+                                        }
+                                        Database::disconnect();
+                                    ?>
+                            </tbody>
+                    </table>
                 </div>
+            </div>
                  
     </div> <!-- /container -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

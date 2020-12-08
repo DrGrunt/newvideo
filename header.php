@@ -88,10 +88,10 @@
                 <?php endif; ?>
                 <?php if( isset($_SESSION["loggedin"]) && ($_SESSION["kayttajaID"]) == 1 && $_SESSION["loggedin"] === true ): ?>
                     <li class="nav-item active">
-                        <a class="nav-link" href="asiakas.php">Asiakas <span class="sr-only"></span></a>
+                        <a class="nav-link" href="asiakas.php">Asiakkaat <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="tuotelista.php">Tuotteita <span class="sr-only"></span></a>
+                        <a class="nav-link" href="tuotelista.php">Tuotelista <span class="sr-only"></span></a>
                     </li>
                 <?php endif; ?>
                 </ul>
