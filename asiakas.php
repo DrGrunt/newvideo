@@ -12,7 +12,7 @@
 ?>
     <div class="container">
         <div class="row">
-            <h1 style="font-size:940%;font-family:helvetica;font-weight:bold;">PHP CRUD Grid</h1>
+            <h1 style="color:#778899;font-size:940%;font-family:helvetica;font-weight:bold;">ASIAKKAAT</h1>
         </div>
             <div class="row">
                 <p>

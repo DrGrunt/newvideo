@@ -11,7 +11,7 @@
 ?>
     <div class="container">
         <div class="row">
-            <h1 style="font-size:500    %;font-family:helvetica;font-weight:bold;">MYYNNISSÄ</h1>
+            <h1 style="font-size:500%;font-family:helvetica;font-weight:bold;color:#778899;">MYYNNISSÄ</h1>
         </div>
             <div class="row">
                 <p>

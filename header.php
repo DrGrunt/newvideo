@@ -68,7 +68,7 @@
 
   <style>
   body {
-    background-color: #cccccc;
+    background-color: #0000;
    }
     </style>
   

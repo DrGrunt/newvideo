@@ -56,7 +56,7 @@
 
     <div class="container">
         <div class="row">
-            <h1 style="font-size:500    %;font-family:helvetica;font-weight:bold;">MYYNNISSÄ</h1>
+            <h1 style="color:#778899;font-size:400%;">MYYNNISSÄ</h1>
         </div>
             <div class="row">
                     <table class="table table-striped table-bordered">
